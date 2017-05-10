@@ -23,8 +23,7 @@ class Booklistapp < Sinatra::Base
 	# GET a specific book
 	get '/books/:id' do |id|
 		book = books_db.select {|books_db| books_db["id"] == id.to_i}
-		book.to_s
-	  
+		book.to_s  
 	end
 
 	#CREATE a book
@@ -49,8 +48,7 @@ class Booklistapp < Sinatra::Base
 	#GET a specific person
 	get '/people/:id' do |id|
 		person = people_db.select {|people_db| people_db["id"] == id.to_i}
-		person.to_s
-	  
+		person.to_s 
 	end
 
 	#CREATE a person
