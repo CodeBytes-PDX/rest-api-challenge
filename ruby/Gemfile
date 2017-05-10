@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+ruby "2.3.1"
+
+# sinatra and friends
+gem "sinatra", "~> 1.4"
+gem "sinatra-param", "~> 1.4"
