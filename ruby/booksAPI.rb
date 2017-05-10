@@ -28,7 +28,7 @@ class Booklistapp < Sinatra::Base
 	end
 
 	#CREATE a book
-	# post '/book' do
+	# post '/books/add' do
 	# end
 
 	# UPDATE a book
@@ -54,7 +54,7 @@ class Booklistapp < Sinatra::Base
 	end
 
 	#CREATE a person
-	# post '/person' do
+	# post '/people/add' do
 	# end
 
 	# UPDATE a person
