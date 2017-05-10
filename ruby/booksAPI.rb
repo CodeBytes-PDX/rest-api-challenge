@@ -20,15 +20,20 @@ class Booklistapp < Sinatra::Base
 		books_db.to_s
 	end
 
-	#GET a specific book
+	# GET a specific book
 	get '/books/:id' do |id|
 		book = books_db.select {|books_db| books_db["id"] == id.to_i}
 		book.to_s
 	  
 	end
 
+	#CREATE a book
+	# post '/book' do
+	# end
 
-	# UPDATE
+	# UPDATE a book
+	# patch '/books/:id' do 
+	# end
 	
 
 #----- People API endpoints
@@ -36,7 +41,7 @@ class Booklistapp < Sinatra::Base
 	people = File.read('people.json')
 	people_db = JSON.parse(people)
 	
-	#List all people
+	# List all people
 	get '/people' do
 		people_db.to_s
 	end	
@@ -47,6 +52,14 @@ class Booklistapp < Sinatra::Base
 		person.to_s
 	  
 	end
+
+	#CREATE a person
+	# post '/person' do
+	# end
+
+	# UPDATE a person
+	# patch '/people/:id' do 
+	# end
 
 	run! if app_file == $0
 	
