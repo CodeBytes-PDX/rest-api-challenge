@@ -2,7 +2,7 @@
 
 ### Let's Build an API!
 
-Meetup was held on May 11, 2017
+Meetup was held on May 10, 2017
 
 This repo contains tutorial files for a simple REST API implemented in NodeJS, Python and Ruby.
 
