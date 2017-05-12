@@ -29,7 +29,7 @@ def get_users():
 
 @app.route("/user/<int:user_id>", methods=['GET'])
 def get_user(user_id):
-    resp = "User " + user_id
+    resp = "User {}".format(user_id)
     return jsonify(resp)
 
 @app.route("/user/add", methods=['POST'])
