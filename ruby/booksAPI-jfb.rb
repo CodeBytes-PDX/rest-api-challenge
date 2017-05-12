@@ -50,6 +50,19 @@ class Booklistapp < Sinatra::Base
 
   # CREATE a book
   post '/books/add' do
+    req_in = JSON.parse(request.body.read)
+    if req_in and req_in['author_first_name'] and req_in['author_last_name'] and req_in['title'] and req_in['page_number']
+      ids = []
+      books_db.each { |row|
+        ids << row['id']
+      }
+      next_id = ids.max + 1
+      req_in['id'] = next_id
+      books_db << req_in
+      req_in.to_s
+    else
+      "Incomplete record received"
+    end # if req_in ...
   end
 
   # UPDATE a book
