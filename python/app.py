@@ -44,9 +44,9 @@ def get_books():
     resp = "Not implemented"
     return jsonify(resp)
 
-@app.route("/book/<int:user_id>", methods=['GET'])
+@app.route("/book/<int:book_id>", methods=['GET'])
 def get_book(book_id):
-    resp = "Book " + user_id
+    resp = "Book {}".format(book_id)
     return jsonify(resp)
 
 @app.route("/book/add", methods=['POST'])
@@ -69,5 +69,7 @@ def new_book():
     resp = "Book added"
     return jsonify(resp)
 
+
+# The main entry point for the program
 if __name__ == "__main__":
     app.run()

@@ -50,4 +50,11 @@ now, you can run the application with
 $ python app.py
 ```
 
+Alternatively, you can run the application in _debug_ mode which reloads the app when changes are saved.  This is done by setting the environment variable `FLASK_DEBUG`:
+
+```
+$ FLASK_DEBUG=1 python app.py
+```
+
+
 visit the root url to see the hello world endpoint
