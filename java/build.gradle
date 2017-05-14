@@ -14,14 +14,30 @@ repositories {
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    compile "com.sparkjava:spark-core:2.6.0"
+    compile 'com.sparkjava:spark-core:2.6.0'
     compile 'org.slf4j:slf4j-simple:1.7.25'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.8'
     compile 'com.google.guava:guava:21.0'
     compile 'com.google.code.gson:gson:2.8.0'
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
 }
+
+sourceCompatibility = "1.8"
+
+task checkJavaVersion {
+    doLast {
+        if (!JavaVersion.current().isJava8()) {
+            String message = "ERROR: Java 1.8 required but " +
+                    JavaVersion.current() +
+                    " found. Change your JAVA_HOME environment variable."
+            throw new IllegalStateException(message)
+        }
+    }
+}
+
+compileJava.dependsOn checkJavaVersion
 
 // Define the main class for the application
 mainClassName = 'codebytes.App'
