@@ -2,7 +2,9 @@ package codebytes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/** User model object with annotations for JSON processing */
+/**
+ * User model object with annotations for JSON processing
+ */
 public class User {
     @JsonProperty("id")
     private int id;
@@ -84,16 +86,16 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
 
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (gender != null ? !gender.equals(user.gender) : user.gender != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) { return false; }
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) { return false; }
+        if (email != null ? !email.equals(user.email) : user.email != null) { return false; }
+        if (gender != null ? !gender.equals(user.gender) : user.gender != null) { return false; }
         return ipAddress != null ? ipAddress.equals(user.ipAddress) : user.ipAddress == null;
 
     }

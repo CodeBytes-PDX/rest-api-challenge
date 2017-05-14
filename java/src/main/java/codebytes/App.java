@@ -1,6 +1,6 @@
 package codebytes;
 
-import codebytes.AppResponse.Code;
+import codebytes.ResponsePayload.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,14 +49,14 @@ public class App {
         // root path: greeting
         get("/", (req, res) -> {
             res.header(CONTENT_TYPE, "text/html");
-            return "<h1>Hello Java Programmer!</h1>";
+            return "<h1>Hello World!</h1>";
         });
 
         // users
         get("/users", (req, res) -> {
-            return new AppResponse(Code.SUCCESS,
-                                   "Total Users: " + users.size(),
-                                   "** TO DO **");
+            return new ResponsePayload(Status.SUCCESS,
+                    "Total Users: " + users.size(),
+                    "** TO DO **");
         }, transformer);
 
         Random random = new Random();
@@ -65,7 +65,7 @@ public class App {
             int randomIdx = random.nextInt(users.size());
             String cheekyMsg = String.format("Requested User(%d) however returning random response", id);
 
-            return new AppResponse(Code.SUCCESS,
+            return new ResponsePayload(Status.SUCCESS,
                                    cheekyMsg,
                                    users.get(randomIdx));
         }, transformer);
@@ -76,7 +76,7 @@ public class App {
 
             // do something with user
 
-            return new AppResponse(Code.SUCCESS,
+            return new ResponsePayload(Status.SUCCESS,
                                    "Processed new user",
                                    user);
         }, transformer);
@@ -108,7 +108,7 @@ public class App {
 
     // load JSON file and parse as list of specified type
     private  <T> List<T> loadData(Path path, Class<T> cls) {
-        LOG.info("  Path exists '{}' - {}", path, path.toFile().exists());
+        LOG.info("  Loading data file '{}' found: {}", path, path.toFile().exists());
 
         try (Reader reader = Files.newBufferedReader(path)) {
             return transformer.listFromJSON(reader, cls);

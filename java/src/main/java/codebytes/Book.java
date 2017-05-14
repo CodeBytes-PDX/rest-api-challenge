@@ -2,7 +2,9 @@ package codebytes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/** Book model object with annotations for JSON processing */
+/**
+ * Book model object with annotations for JSON processing
+ */
 public class Book {
     @JsonProperty("id")
     private int id;
@@ -73,17 +75,19 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) { return true; }
+        if (o == null || getClass() != o.getClass()) { return false; }
 
         Book book = (Book) o;
 
-        if (id != book.id) return false;
-        if (pages != book.pages) return false;
-        if (authorFirstName != null ? !authorFirstName.equals(book.authorFirstName) : book.authorFirstName != null)
+        if (id != book.id) { return false; }
+        if (pages != book.pages) { return false; }
+        if (authorFirstName != null ? !authorFirstName.equals(book.authorFirstName) : book.authorFirstName != null) {
             return false;
-        if (authorLastName != null ? !authorLastName.equals(book.authorLastName) : book.authorLastName != null)
+        }
+        if (authorLastName != null ? !authorLastName.equals(book.authorLastName) : book.authorLastName != null) {
             return false;
+        }
         return title != null ? title.equals(book.title) : book.title == null;
 
     }
