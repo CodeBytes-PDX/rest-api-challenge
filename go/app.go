@@ -73,13 +73,7 @@ func main() {
 
 	// routes.HandleFunc("/boom", func(w http.ResponseWriter, req *http.Request) { panic("boom") })
 
-	logging := negroni.NewLogger()
-	logging.SetFormat("{{.StartTime}} | {{.Status}} | {{.Hostname}} | {{.Method}} {{.Path}} \n")
-	middleware := negroni.New(
-		negroni.NewRecovery(),
-		logging,
-		negroni.NewStatic(http.Dir("data")),
-	)
+	middleware := negroni.Classic() // logging and panic recovery
 	middleware.UseHandler(routes)
 
 	fmt.Printf("Listening on http://localhost:%d/\n\n", port)
