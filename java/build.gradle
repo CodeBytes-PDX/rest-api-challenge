@@ -1,0 +1,56 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+// Apply the application plugin to add support for building an application
+apply plugin: 'application'
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // You can declare any Maven/Ivy/file repository here.
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    // This dependency is found on compile classpath of this component and consumers.
+    compile 'com.sparkjava:spark-core:2.6.0'
+    compile 'org.slf4j:slf4j-simple:1.7.25'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.8.8'
+    // possibly useful
+    //compile 'com.google.guava:guava:21.0'
+    //compile 'com.google.code.gson:gson:2.8.0'
+
+    // JUnit test framework
+    testCompile 'junit:junit:4.12'
+}
+
+task checkJavaVersion {
+    doLast {
+        if (!JavaVersion.current().isJava8()) {
+            String message = "ERROR: Java 1.8 required but " +
+                    JavaVersion.current() +
+                    " found. Change your JAVA_HOME environment variable."
+            throw new IllegalStateException(message)
+        }
+    }
+}
+
+compileJava.dependsOn checkJavaVersion
+
+// Define the main class for the application
+mainClassName = 'codebytes.App'
+
+task fatJar(type: Jar) {
+    description 'Assembles a full jar archive containing the main classes and dependencies.'
+    manifest {
+        attributes "Main-Class": "$mainClassName"
+    }
+
+    baseName = project.name + '-full'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
