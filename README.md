@@ -6,6 +6,12 @@ Meetup was held on May 10, 2017
 
 This repo contains tutorial files for a simple REST API implemented in NodeJS, Python and Ruby.
 
+You should clone the repo before beginning!
+
+```
+git clone https://github.com/CodeBytes-PDX/rest-api-challenge
+```
+
 ### Endpoints
 
 Here are the endpoints you should implement:
